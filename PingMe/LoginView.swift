@@ -20,31 +20,39 @@ struct LoginView: View {
                 TextField("Username", text: $userName)
                 TextField("Password", text: $passWord)
                 TextField("Retype Password", text: $rePassWord)
-                
+
                 Button("Sign-up") {
                     viewModel.authState = .Signup
+                    viewModel.signUp(userName: userName, passWord: passWord)
                 }.background(.yellow)
-                
+
                 Button("Sign-in") {
                     viewModel.authState = .Signin
                 }
             }
             .padding()
+            .onAppear{
+                viewModel.addAuthListener()
+            }
         } else {
             VStack {
                 TextField("Username", text: $userName)
                 TextField("Password", text: $passWord)
-                
+
                 Button("Sign-in") {
                     viewModel.authState = .Signin
                 }.background(.yellow)
-                
+
                 Button("Sign-up") {
                     viewModel.authState = .Signup
                 }
             }
             .padding()
+            .onAppear{
+                viewModel.addAuthListener()
+            }
         }
+            
     }
 }
 

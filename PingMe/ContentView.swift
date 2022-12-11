@@ -26,9 +26,10 @@ struct ContentView: View {
         }
         .padding()
         .onAppear {
-            viewModel.addListener()
+            viewModel.addSnapShotListener()
             print(viewModel.messages)
         }
+        
     }
 }
 
