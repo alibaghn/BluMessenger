@@ -11,6 +11,7 @@ import FirebaseCore
 
 @main
 struct PingMeApp: App {
+    @StateObject var viewModel = ViewModel()
     init() {
         FirebaseApp.configure()
         
@@ -19,7 +20,8 @@ struct PingMeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+             LoginView()
+                .environmentObject(viewModel)
         }
     }
 }

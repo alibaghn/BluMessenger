@@ -9,15 +9,16 @@ import Firebase
 import SwiftUI
 
 struct ContentView: View {
-    let viewModel = ViewModel()
+    @EnvironmentObject var viewModel : ViewModel
     @State var textFieldValue: String = ""
 
     var body: some View {
-        
-        
-        
-        
         VStack {
+            
+            List(viewModel.messages, id: \.self) { message in Text(message)
+            }
+            
+            
             TextField("Placeholder", text: $textFieldValue)
             Button("Send") {
                 viewModel.sendMessage(text: textFieldValue)
@@ -25,7 +26,7 @@ struct ContentView: View {
         }
         .padding()
         .onAppear {
-            viewModel.fetchMessages()
+            viewModel.addListener()
             print(viewModel.messages)
         }
     }
@@ -33,6 +34,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(ViewModel())
     }
 }

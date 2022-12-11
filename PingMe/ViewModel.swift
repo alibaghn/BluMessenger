@@ -8,10 +8,11 @@
 import Firebase
 import Foundation
 
-class ViewModel {
+class ViewModel: ObservableObject {
     let db = Firestore.firestore()
-    var messages: [String] = []
-
+    @Published var messages: [String] = []
+    @Published var authState = AuthState.Signup
+    
     func sendMessage(text: String) {
         db.collection("users").addDocument(data: ["message": "\(text)"]) {
             error in
@@ -22,15 +23,16 @@ class ViewModel {
         }
     }
 
-    func fetchMessages() {
-        db.collection("users").getDocuments { snapShot, error in
-
-            guard error == nil, let snapShot else { return }
-            self.messages = snapShot.documents.map { doc in
-                doc.data()["message"] as! String
+    func addListener() {
+        db.collection("users").addSnapshotListener { snapShot, _ in
+            guard let snapShot else { return }
+            let newMessages = snapShot.documentChanges.map { doc in
+                doc.document.data()["message"] as! String
+            }
+            newMessages.forEach { msg in
+                self.messages.append(msg)
             }
             print(self.messages)
-
         }
     }
 }
