@@ -15,45 +15,49 @@ struct LoginView: View {
     @State var rePassWord: String = ""
 
     var body: some View {
-        if viewModel.authState == .Signup {
+        switch viewModel.authState {
+        case .WillSignUp:
             VStack {
                 TextField("Username", text: $userName)
                 TextField("Password", text: $passWord)
                 TextField("Retype Password", text: $rePassWord)
-
+           
                 Button("Sign-up") {
-                    viewModel.authState = .Signup
+                    viewModel.authState = .WillSignUp
                     viewModel.signUp(userName: userName, passWord: passWord)
                 }.background(.yellow)
-
+           
                 Button("Sign-in") {
-                    viewModel.authState = .Signin
+                    viewModel.authState = .WillSignIn
                 }
             }
             .padding()
-            .onAppear{
+            .onAppear {
                 viewModel.addAuthListener()
             }
-        } else {
+        
+        case .WillSignIn:
             VStack {
                 TextField("Username", text: $userName)
                 TextField("Password", text: $passWord)
-
+            
                 Button("Sign-in") {
-                    viewModel.authState = .Signin
+                    viewModel.authState = .WillSignIn
                 }.background(.yellow)
-
+            
                 Button("Sign-up") {
-                    viewModel.authState = .Signup
+                    viewModel.authState = .WillSignUp
                 }
             }
             .padding()
-            .onAppear{
+            .onAppear {
                 viewModel.addAuthListener()
             }
+        case .DidSignIn:
+            ContentView()
         }
-            
     }
+    
 }
 
 struct LoginView_Previews: PreviewProvider {

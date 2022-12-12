@@ -11,7 +11,7 @@ import Foundation
 class ViewModel: ObservableObject {
     let db = Firestore.firestore()
     @Published var messages: [String] = []
-    @Published var authState = AuthState.Signup
+    @Published var authState = AuthState.WillSignUp
   
     // MARK: - ContentView Functions
     
@@ -41,8 +41,15 @@ class ViewModel: ObservableObject {
     // MARK: - LoginView Functions
 
     func addAuthListener() {
-        Auth.auth().addStateDidChangeListener { _, _ in
+        Auth.auth().addStateDidChangeListener { _, user in
             print("Auth status changed")
+            if let user {
+                print("Welcome \(String(describing: user.uid))")
+                self.authState = .DidSignIn
+                
+            } else {
+                return
+            }
         }
     }
     
@@ -53,7 +60,8 @@ class ViewModel: ObservableObject {
                 return
             }
             if let authResult {
-                print("Auth Result:\(authResult.user.metadata)")
+                print("Auth Result:\(authResult.user.uid)")
+                
             }
         }
     }
