@@ -10,8 +10,10 @@ import Foundation
 
 class ViewModel: ObservableObject {
     let db = Firestore.firestore()
+    let fbAuth = Auth.auth()
     @Published var messages: [String] = []
     @Published var authState = AuthState.WillSignUp
+    @Published var users:[String]=[]
   
     // MARK: - ContentView Functions
     
@@ -22,6 +24,7 @@ class ViewModel: ObservableObject {
                 print("An error occured: \(String(describing: error))")
                 return
             }
+            
         }
     }
     
@@ -41,11 +44,17 @@ class ViewModel: ObservableObject {
     // MARK: - LoginView Functions
 
     func addAuthListener() {
-        Auth.auth().addStateDidChangeListener { _, user in
+        fbAuth.addStateDidChangeListener { _, user in
             print("Auth status changed")
             if let user {
                 print("Welcome \(String(describing: user.uid))")
                 self.authState = .DidSignIn
+                // TODO: Is user still signed in?
+//                do {
+//                    try self.fbAuth.signOut()
+//                } catch  {
+//                    print(error)
+//                }
                 
             } else {
                 return
@@ -54,15 +63,33 @@ class ViewModel: ObservableObject {
     }
     
     func signUp(userName: String, passWord: String) {
-        Auth.auth().createUser(withEmail: userName, password: passWord) { authResult, error in
+        fbAuth.createUser(withEmail: userName, password: passWord) { authResult, error in
             guard error == nil else {
                 print(String(describing: error))
                 return
             }
             if let authResult {
                 print("Auth Result:\(authResult.user.uid)")
-                
             }
         }
     }
+    
+    //MARK: - UsersView Functions
+    
+    
+    func fetchUsers(){
+        db.collection("users").getDocuments { snapShot, error in
+            guard error==nil else {
+                print(String(describing: error))
+                return}
+            if let snapShot {
+                self.users = snapShot.documents.map { doc in
+                    doc.documentID
+                }
+                print(self.users)
+            }
+        }
+    }
+    
+    
 }

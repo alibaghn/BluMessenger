@@ -33,6 +33,8 @@ struct LoginView: View {
             }
             .padding()
             .onAppear {
+                print("Here it is!")
+                viewModel.fetchUsers()
                 viewModel.addAuthListener()
             }
         
@@ -51,10 +53,11 @@ struct LoginView: View {
             }
             .padding()
             .onAppear {
+               
                 viewModel.addAuthListener()
             }
         case .DidSignIn:
-            ContentView()
+            ContentView().transition(.move(edge: .leading))
         }
     }
     
