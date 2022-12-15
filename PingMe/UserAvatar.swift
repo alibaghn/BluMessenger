@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct UserView: View {
+struct UserAvatar: View {
     let name:String
     var body: some View {
+        
         VStack{
             Image(systemName: "person.crop.circle")
             Text(name)
@@ -19,6 +20,6 @@ struct UserView: View {
 
 struct UserView_Previews: PreviewProvider {
     static var previews: some View {
-        UserView(name: "Ali")
+        UserAvatar(name: "Ali")
     }
 }
