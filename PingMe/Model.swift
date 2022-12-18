@@ -8,5 +8,5 @@
 import Foundation
 
 enum AuthState {
-    case WillSignIn, WillSignUp, DidSignIn
+    case WillSignIn, WillSignUp, DidSignIn, DidSignOut
 }

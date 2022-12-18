@@ -63,6 +63,7 @@ class ViewModel: ObservableObject {
     func signOut() {
         do {
             try fbAuth.signOut()
+            authState = .DidSignOut
         } catch {
             print(error)
         }

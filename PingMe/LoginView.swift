@@ -38,7 +38,7 @@ struct LoginView: View {
                 viewModel.addAuthListener()
             }
         
-        case .WillSignIn:
+        case .WillSignIn, .DidSignOut:
             VStack {
                 TextField("Email", text: $userName)
                 TextField("Password", text: $passWord)
@@ -55,6 +55,7 @@ struct LoginView: View {
             .onAppear {
                 viewModel.addAuthListener()
             }
+            
         case .DidSignIn:
             UsersView().transition(.move(edge: .leading))
         }

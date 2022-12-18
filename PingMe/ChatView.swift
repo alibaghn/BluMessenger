@@ -47,12 +47,6 @@ struct ChatView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView(userId: "Test").environmentObject(ViewModel())
-    }
-}
-
 extension ChatView {
     func sendMessage(text: String) {
         viewModel.db.collection("chats").addDocument(data: ["message": "\(text)", "groupId": groupId]) {
@@ -80,5 +74,11 @@ extension ChatView {
 
     func removeSnapShotListener() {
         listener?.remove()
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ChatView(userId: "Test").environmentObject(ViewModel())
     }
 }
