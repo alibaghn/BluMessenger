@@ -11,33 +11,36 @@ import Foundation
 class ViewModel: ObservableObject {
     let db = Firestore.firestore()
     let fbAuth = Auth.auth()
-    @Published var messages: [String] = []
+    @Published var messages : [String] = []
     @Published var authState = AuthState.WillSignUp
-    @Published var users:[String]=[]
+    @Published var users: [String] = []
+    @Published var didContentViewLoaded = false
   
     // MARK: - ContentView Functions
     
     func sendMessage(text: String) {
-        db.collection("users").addDocument(data: ["message": "\(text)"]) {
+        db.collection("chats").addDocument(data: ["message": "\(text)"]) {
             error in
             guard error == nil else {
                 print("An error occured: \(String(describing: error))")
                 return
             }
-            
         }
     }
     
+    // TODO: pass messages as function argument and receive it in chatview. then delete self.messages.
     func addSnapShotListener() {
-        db.collection("users").addSnapshotListener { snapShot, _ in
+        db.collection("chats").addSnapshotListener { snapShot, _ in
             guard let snapShot else { return }
             let newMessages = snapShot.documentChanges.map { doc in
-                doc.document.data()["message"] as! String
+                doc.document.data()["message"] as? String
             }
+         
             newMessages.forEach { msg in
-                self.messages.append(msg)
+                self.messages.append(msg ?? "No msg here yet!")
             }
-            print(self.messages)
+            
+            
         }
     }
     
@@ -55,7 +58,7 @@ class ViewModel: ObservableObject {
 //                } catch  {
 //                    print(error)
 //                }
-                
+//
             } else {
                 return
             }
@@ -70,26 +73,37 @@ class ViewModel: ObservableObject {
             }
             if let authResult {
                 print("Auth Result:\(authResult.user.uid)")
+                self.db.collection("users").addDocument(data: ["id": authResult.user.uid, "email": authResult.user.email!])
             }
         }
     }
     
-    //MARK: - UsersView Functions
+    // MARK: - UsersView Functions
     
-    
-    func fetchUsers(){
+    func fetchUsers() {
         db.collection("users").getDocuments { snapShot, error in
-            guard error==nil else {
+            guard error == nil else {
                 print(String(describing: error))
-                return}
+                return
+            }
             if let snapShot {
                 self.users = snapShot.documents.map { doc in
-                    doc.documentID
+                    doc.get("email") as! String
                 }
                 print(self.users)
             }
         }
     }
     
+    func signOut() {
+        do {
+            try fbAuth.signOut()
+        } catch {
+            print(error)
+        }
+    }
     
+    func createGroup(with id: String) {
+        db.collection("groups").addDocument(data: ["members": [fbAuth.currentUser?.uid, id]])
+    }
 }

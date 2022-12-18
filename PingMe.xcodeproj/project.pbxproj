@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0CFAE7C62942E5E900E2D7D0 /* PingMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE7C52942E5E900E2D7D0 /* PingMeApp.swift */; };
-		0CFAE7C82942E5E900E2D7D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE7C72942E5E900E2D7D0 /* ContentView.swift */; };
+		0CFAE7C82942E5E900E2D7D0 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE7C72942E5E900E2D7D0 /* ChatView.swift */; };
 		0CFAE7CA2942E5EA00E2D7D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CFAE7C92942E5EA00E2D7D0 /* Assets.xcassets */; };
 		0CFAE7CD2942E5EA00E2D7D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CFAE7CC2942E5EA00E2D7D0 /* Preview Assets.xcassets */; };
 		0CFAE7D4294301D400E2D7D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CFAE7D3294301D400E2D7D0 /* GoogleService-Info.plist */; };
@@ -49,7 +49,7 @@
 /* Begin PBXFileReference section */
 		0CFAE7C22942E5E900E2D7D0 /* PingMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PingMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFAE7C52942E5E900E2D7D0 /* PingMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingMeApp.swift; sourceTree = "<group>"; };
-		0CFAE7C72942E5E900E2D7D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0CFAE7C72942E5E900E2D7D0 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		0CFAE7C92942E5EA00E2D7D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CFAE7CC2942E5EA00E2D7D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0CFAE7D3294301D400E2D7D0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				0CFAE7C52942E5E900E2D7D0 /* PingMeApp.swift */,
-				0CFAE7C72942E5E900E2D7D0 /* ContentView.swift */,
+				0CFAE7C72942E5E900E2D7D0 /* ChatView.swift */,
 				0CFAE80E2945555D00E2D7D0 /* LoginView.swift */,
 				0CFAE80C29452EA200E2D7D0 /* ViewModel.swift */,
 				0CFAE816294AD04800E2D7D0 /* UserAvatar.swift */,
@@ -243,7 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CFAE81129455FDD00E2D7D0 /* Model.swift in Sources */,
-				0CFAE7C82942E5E900E2D7D0 /* ContentView.swift in Sources */,
+				0CFAE7C82942E5E900E2D7D0 /* ChatView.swift in Sources */,
 				0CFAE80D29452EA200E2D7D0 /* ViewModel.swift in Sources */,
 				0CFAE80F2945555D00E2D7D0 /* LoginView.swift in Sources */,
 				0CFAE7C62942E5E900E2D7D0 /* PingMeApp.swift in Sources */,

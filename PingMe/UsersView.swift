@@ -10,26 +10,33 @@ import SwiftUI
 struct UsersView: View {
     @EnvironmentObject var viewModel: ViewModel
     let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-    
+
     var body: some View {
-        NavigationView {
-            LazyVGrid(columns: columns) {
-                ForEach(viewModel.users, id: \.self) { user in
-                    
-                    NavigationLink(destination: ContentView()) {
-                        UserAvatar(name: user)
+        VStack {
+            NavigationView {
+                LazyVGrid(columns: columns) {
+                    ForEach(viewModel.users, id: \.self) { user in
+                        NavigationLink(destination: ChatView(chatTitle: user)) {
+                            UserAvatar(name: user)
+                            // TODO: add a group to db while navigation to chatview, also customize chatview based on memebers (self and other member name)
+                        }
                     }
                 }
+                .onAppear {
+                    viewModel.addAuthListener()
+                    viewModel.fetchUsers()
+                }
             }
-            .onAppear {
-                viewModel.fetchUsers()
+
+            Button("Sign Out") {
+                viewModel.signOut()
             }
         }
     }
 }
 
-struct UsersView_Previews: PreviewProvider {
-    static var previews: some View {
-        UsersView().environmentObject(ViewModel())
-    }
-}
+// struct UsersView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UsersView().environmentObject(ViewModel())
+//    }
+// }

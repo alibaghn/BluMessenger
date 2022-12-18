@@ -19,7 +19,7 @@ struct PingMeApp: App {
     
     var body: some Scene {
         WindowGroup {
-             UsersView()
+             LoginView()
                 .environmentObject(viewModel)
         }
     }

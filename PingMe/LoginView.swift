@@ -18,7 +18,7 @@ struct LoginView: View {
         switch viewModel.authState {
         case .WillSignUp:
             VStack {
-                TextField("Username", text: $userName)
+                TextField("Email", text: $userName)
                 TextField("Password", text: $passWord)
                 TextField("Retype Password", text: $rePassWord)
            
@@ -40,7 +40,7 @@ struct LoginView: View {
         
         case .WillSignIn:
             VStack {
-                TextField("Username", text: $userName)
+                TextField("Email", text: $userName)
                 TextField("Password", text: $passWord)
             
                 Button("Sign-in") {
@@ -53,18 +53,16 @@ struct LoginView: View {
             }
             .padding()
             .onAppear {
-               
                 viewModel.addAuthListener()
             }
         case .DidSignIn:
-            ContentView().transition(.move(edge: .leading))
+            UsersView().transition(.move(edge: .leading))
         }
     }
-    
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView().environmentObject(ViewModel())
-    }
-}
+//struct LoginView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginView().environmentObject(ViewModel())
+//    }
+//}
