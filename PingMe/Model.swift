@@ -10,3 +10,9 @@ import Foundation
 enum AuthState {
     case WillSignIn, WillSignUp, DidSignIn, DidSignOut
 }
+
+
+//struct Document: Codable {
+//    var sender: String
+//    var message: String
+//}

@@ -14,6 +14,7 @@ struct ChatView: View {
     let userId: String
     @State var messages: [String] = []
     @State var listener: ListenerRegistration?
+
     var groupId: String {
         if userId < viewModel.fbAuth.currentUser!.uid {
             return userId + viewModel.fbAuth.currentUser!.uid
@@ -31,6 +32,8 @@ struct ChatView: View {
                 TextField("Placeholder", text: $textFieldValue)
                 Button("Send") {
                     sendMessage(text: textFieldValue)
+                    textFieldValue = ""
+                    
                 }
             }
             .padding()
@@ -49,7 +52,7 @@ struct ChatView: View {
 
 extension ChatView {
     func sendMessage(text: String) {
-        viewModel.db.collection("chats").addDocument(data: ["message": "\(text)", "groupId": groupId]) {
+        viewModel.db.collection("chats").addDocument(data: ["message": "\(text)", "groupId": groupId, "date": Date().timeIntervalSince1970]) {
             error in
             guard error == nil else {
                 print("An error occured: \(String(describing: error))")
@@ -58,18 +61,20 @@ extension ChatView {
         }
     }
 
-    // TODO: only read messages from certain documents
     func addSnapShotListener() {
-        listener = viewModel.db.collection("chats").whereField("groupId", isEqualTo: groupId).addSnapshotListener { snapShot, _ in
-            guard let snapShot else { return }
-            let newMessages = snapShot.documentChanges.map { doc in
-                doc.document.data()["message"] as? String
+        listener = viewModel.db.collection("chats")
+            .whereField("groupId", isEqualTo: groupId)
+            .order(by: "date", descending: false)
+            .addSnapshotListener { snapShot, _ in
+                guard let snapShot else { return }
+                let newMessages = snapShot.documentChanges.map { doc in
+                    doc.document.data()["message"] as? String
+                }
+                
+                newMessages.forEach { msg in
+                    self.messages.append(msg ?? "No msg here yet!")
+                }
             }
-
-            newMessages.forEach { msg in
-                self.messages.append(msg ?? "No msg here yet!")
-            }
-        }
     }
 
     func removeSnapShotListener() {
