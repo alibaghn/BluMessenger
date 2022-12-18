@@ -14,6 +14,13 @@ struct ChatView: View {
     let userId: String
     @State var messages: [String] = []
     @State var listener: ListenerRegistration?
+    var groupId: String {
+        if userId < viewModel.fbAuth.currentUser!.uid {
+            return userId + viewModel.fbAuth.currentUser!.uid
+        } else {
+            return viewModel.fbAuth.currentUser!.uid + userId
+        }
+    }
 
     var body: some View {
         NavigationView {
@@ -48,7 +55,7 @@ struct ContentView_Previews: PreviewProvider {
 
 extension ChatView {
     func sendMessage(text: String) {
-        viewModel.db.collection("chats").addDocument(data: ["message": "\(text)"]) {
+        viewModel.db.collection("chats").addDocument(data: ["message": "\(text)", "groupId": groupId]) {
             error in
             guard error == nil else {
                 print("An error occured: \(String(describing: error))")
@@ -59,7 +66,7 @@ extension ChatView {
 
     // TODO: only read messages from certain documents
     func addSnapShotListener() {
-        listener = viewModel.db.collection("chats").addSnapshotListener { snapShot, _ in
+        listener = viewModel.db.collection("chats").whereField("groupId", isEqualTo: groupId).addSnapshotListener { snapShot, _ in
             guard let snapShot else { return }
             let newMessages = snapShot.documentChanges.map { doc in
                 doc.document.data()["message"] as? String

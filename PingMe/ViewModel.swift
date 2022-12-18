@@ -24,13 +24,7 @@ class ViewModel: ObservableObject {
             if let user {
                 print("Welcome \(String(describing: user.uid))")
                 self.authState = .DidSignIn
-                // TODO: Is user still signed in?
-//                do {
-//                    try self.fbAuth.signOut()
-//                } catch  {
-//                    print(error)
-//                }
-//
+            
             } else {
                 return
             }
