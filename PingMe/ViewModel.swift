@@ -16,33 +16,8 @@ class ViewModel: ObservableObject {
     @Published var users: [String] = []
     @Published var didContentViewLoaded = false
   
-    // MARK: - ContentView Functions
     
-    func sendMessage(text: String) {
-        db.collection("chats").addDocument(data: ["message": "\(text)"]) {
-            error in
-            guard error == nil else {
-                print("An error occured: \(String(describing: error))")
-                return
-            }
-        }
-    }
     
-    // TODO: pass messages as function argument and receive it in chatview. then delete self.messages.
-    func addSnapShotListener() {
-        db.collection("chats").addSnapshotListener { snapShot, _ in
-            guard let snapShot else { return }
-            let newMessages = snapShot.documentChanges.map { doc in
-                doc.document.data()["message"] as? String
-            }
-         
-            newMessages.forEach { msg in
-                self.messages.append(msg ?? "No msg here yet!")
-            }
-            
-            
-        }
-    }
     
     // MARK: - LoginView Functions
 

@@ -12,7 +12,8 @@ struct ChatView: View {
     @EnvironmentObject var viewModel: ViewModel
     @State var textFieldValue: String = ""
     let chatTitle:String
-    @State var messages: [String] = []
+    @State var messages : [String] = []
+    @State var listener: ListenerRegistration?
     
     
 
@@ -21,17 +22,21 @@ struct ChatView: View {
         NavigationView {
             
             VStack {
-                List(viewModel.messages, id: \.self) { message in Text(message)
+                List(messages, id: \.self) { message in Text(message)
                 }
 
                 TextField("Placeholder", text: $textFieldValue)
                 Button("Send") {
-                    viewModel.sendMessage(text: textFieldValue)
+                    sendMessage(text: textFieldValue)
                 }
             }
             .padding()
             .onAppear {
-                viewModel.addSnapShotListener()
+                addSnapShotListener()
+            }
+            
+            .onDisappear{
+                removeSnapShotListener()
             }
             
         }
@@ -46,5 +51,40 @@ struct ChatView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ChatView(chatTitle: "Test").environmentObject(ViewModel())
+    }
+}
+
+
+extension ChatView {
+    
+    func sendMessage(text: String) {
+        viewModel.db.collection("chats").addDocument(data: ["message": "\(text)"]) {
+            error in
+            guard error == nil else {
+                print("An error occured: \(String(describing: error))")
+                return
+            }
+        }
+    }
+    
+   
+    func addSnapShotListener() {
+        listener = viewModel.db.collection("chats").addSnapshotListener { snapShot, _ in
+            guard let snapShot else { return }
+            let newMessages = snapShot.documentChanges.map { doc in
+                doc.document.data()["message"] as? String
+            }
+         
+            newMessages.forEach { msg in
+                self.messages.append(msg ?? "No msg here yet!")
+            }
+            
+            
+        }
+    }
+    
+    
+    func removeSnapShotListener(){
+        listener?.remove()
     }
 }
