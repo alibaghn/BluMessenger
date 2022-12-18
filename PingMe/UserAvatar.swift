@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct UserAvatar: View {
-    let name:String
+    let id:String
     var body: some View {
         
         VStack{
             Image(systemName: "person.crop.circle")
-            Text(name)
+            Text(id)
         }
     }
 }
 
 struct UserView_Previews: PreviewProvider {
     static var previews: some View {
-        UserAvatar(name: "Ali")
+        UserAvatar(id: "Ali")
     }
 }

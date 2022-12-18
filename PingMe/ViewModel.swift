@@ -11,14 +11,11 @@ import Foundation
 class ViewModel: ObservableObject {
     let db = Firestore.firestore()
     let fbAuth = Auth.auth()
-    @Published var messages : [String] = []
+    @Published var messages: [String] = []
     @Published var authState = AuthState.WillSignUp
     @Published var users: [String] = []
     @Published var didContentViewLoaded = false
   
-    
-    
-    
     // MARK: - LoginView Functions
 
     func addAuthListener() {
@@ -63,9 +60,8 @@ class ViewModel: ObservableObject {
             }
             if let snapShot {
                 self.users = snapShot.documents.map { doc in
-                    doc.get("email") as! String
+                    doc.get("id") as! String
                 }
-                print(self.users)
             }
         }
     }
@@ -79,6 +75,24 @@ class ViewModel: ObservableObject {
     }
     
     func createGroup(with id: String) {
-        db.collection("groups").addDocument(data: ["members": [fbAuth.currentUser?.uid, id]])
+        var groupId: String {
+            if id < fbAuth.currentUser!.uid {
+                return id + fbAuth.currentUser!.uid
+            } else {
+                return fbAuth.currentUser!.uid + id
+            }
+        }
+        
+        db.collection("groups").whereField("groupId", isEqualTo: groupId).getDocuments { snapShot, error in
+            guard error == nil else { return }
+            if let snapShot {
+                if !snapShot.isEmpty {
+                    print("group already exist")
+                } else {
+                    self.db.collection("groups").addDocument(data: ["members": [id, self.fbAuth.currentUser!.uid], "groupId": groupId])
+                    print("new group added")
+                }
+            }
+        }
     }
 }

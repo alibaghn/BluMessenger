@@ -15,9 +15,11 @@ struct UsersView: View {
         VStack {
             NavigationView {
                 LazyVGrid(columns: columns) {
-                    ForEach(viewModel.users, id: \.self) { user in
-                        NavigationLink(destination: ChatView(chatTitle: user)) {
-                            UserAvatar(name: user)
+                    ForEach(viewModel.users.filter({ user in
+                        user != viewModel.fbAuth.currentUser?.uid
+                    }), id: \.self) { user in
+                        NavigationLink(destination: ChatView(userId: user)) {
+                            UserAvatar(id: user)
                             // TODO: add a group to db while navigation to chatview, also customize chatview based on memebers (self and other member name)
                         }
                     }
