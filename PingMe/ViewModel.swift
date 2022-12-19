@@ -44,6 +44,8 @@ class ViewModel: ObservableObject {
         }
     }
     
+    // TODO: add sign in method
+    
     // MARK: - UsersView Functions
     
     func fetchUsers() {

@@ -27,9 +27,13 @@ struct ChatView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(documents,id: \.date) { doc in Text(doc.message)
+                List(documents,id: \.date) { doc in
+                    
+                    viewModel.fbAuth.currentUser?.uid == doc.sender ?
+                    Text(doc.message).frame(maxWidth:.infinity, alignment: .trailing) :
+                    Text(doc.message).frame(maxWidth:.infinity, alignment: .leading)
+                 
                 }
-
                 TextField("Placeholder", text: $textFieldValue)
                 Button("Send") {
                     sendMessage(text: textFieldValue)
@@ -61,7 +65,7 @@ extension ChatView {
         }
     }
 
-    // TODO: add catch error and see what's the error.
+
     func addSnapShotListener() {
         listener = viewModel.db.collection("chats")
             .whereField("id", isEqualTo: groupId)

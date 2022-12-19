@@ -22,7 +22,7 @@ struct UsersView: View {
                         }, id: \.self) { user in
                             NavigationLink(destination: ChatView(userId: user)) {
                                 UserAvatar(id: user)
-                                // TODO: add a group to db while navigation to chatview, also customize chatview based on memebers (self and other member name)
+        
                             }
                         }
                     }
