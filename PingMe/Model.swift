@@ -12,7 +12,8 @@ enum AuthState {
 }
 
 
-//struct Document: Codable {
-//    var sender: String
-//    var message: String
-//}
+struct Document: Codable{
+    var date: Decimal
+    var sender: String
+    var message: String
+}

@@ -6,13 +6,14 @@
 //
 
 import Firebase
+import FirebaseFirestoreSwift
 import SwiftUI
 
 struct ChatView: View {
     @EnvironmentObject var viewModel: ViewModel
     @State var textFieldValue: String = ""
     let userId: String
-    @State var messages: [String] = []
+    @State var documents: [Document] = []
     @State var listener: ListenerRegistration?
 
     var groupId: String {
@@ -26,14 +27,13 @@ struct ChatView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(messages, id: \.self) { message in Text(message)
+                List(documents,id: \.date) { doc in Text(doc.message)
                 }
 
                 TextField("Placeholder", text: $textFieldValue)
                 Button("Send") {
                     sendMessage(text: textFieldValue)
                     textFieldValue = ""
-                    
                 }
             }
             .padding()
@@ -52,7 +52,7 @@ struct ChatView: View {
 
 extension ChatView {
     func sendMessage(text: String) {
-        viewModel.db.collection("chats").addDocument(data: ["message": "\(text)", "groupId": groupId, "date": Date().timeIntervalSince1970]) {
+        viewModel.db.collection("chats").addDocument(data: ["message": "\(text)", "id": groupId, "date": Date().timeIntervalSince1970, "sender": viewModel.fbAuth.currentUser!.uid]) {
             error in
             guard error == nil else {
                 print("An error occured: \(String(describing: error))")
@@ -61,18 +61,19 @@ extension ChatView {
         }
     }
 
+    // TODO: add catch error and see what's the error.
     func addSnapShotListener() {
         listener = viewModel.db.collection("chats")
-            .whereField("groupId", isEqualTo: groupId)
+            .whereField("id", isEqualTo: groupId)
             .order(by: "date", descending: false)
             .addSnapshotListener { snapShot, _ in
                 guard let snapShot else { return }
-                let newMessages = snapShot.documentChanges.map { doc in
-                    doc.document.data()["message"] as? String
+                let newDocuments = snapShot.documentChanges.compactMap {
+                    try? $0.document.data(as: Document.self)
                 }
-                
-                newMessages.forEach { msg in
-                    self.messages.append(msg ?? "No msg here yet!")
+                newDocuments.forEach { doc in
+                    documents.append(doc)
+                    print(documents)
                 }
             }
     }
@@ -80,10 +81,10 @@ extension ChatView {
     func removeSnapShotListener() {
         listener?.remove()
     }
-}
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView(userId: "Test").environmentObject(ViewModel())
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ChatView(userId: "Test").environmentObject(ViewModel())
+        }
     }
 }
