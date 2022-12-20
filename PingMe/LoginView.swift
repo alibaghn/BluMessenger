@@ -10,21 +10,21 @@ import SwiftUI
 struct LoginView: View {
     @EnvironmentObject var viewModel: ViewModel
 
-    @State var userName: String = ""
-    @State var passWord: String = ""
-    @State var rePassWord: String = ""
+    @State var email: String = ""
+    @State var password: String = ""
+    @State var rePassword: String = ""
 
     var body: some View {
         switch viewModel.authState {
         case .WillSignUp:
             VStack {
-                TextField("Email", text: $userName)
-                TextField("Password", text: $passWord)
-                TextField("Retype Password", text: $rePassWord)
+                TextField("Email", text: $email)
+                TextField("Password", text: $password)
+                TextField("Retype Password", text: $rePassword)
 
                 Button("Sign-up") {
                     viewModel.authState = .WillSignUp
-                    viewModel.signUp(userName: userName, passWord: passWord)
+                    viewModel.signUp(email: email, password: password)
                 }.background(.yellow)
 
                 Button("Sign-in") {
@@ -40,11 +40,13 @@ struct LoginView: View {
 
         case .WillSignIn, .DidSignOut:
             VStack {
-                TextField("Email", text: $userName)
-                TextField("Password", text: $passWord)
+                TextField("Email", text: $email)
+                TextField("Password", text: $password)
 
                 Button("Sign-in") {
                     viewModel.authState = .WillSignIn
+                    viewModel.signIn(email: email, password: password)
+
                 }.background(.yellow)
 
                 Button("Sign-up") {

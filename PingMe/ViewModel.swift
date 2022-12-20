@@ -31,8 +31,8 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func signUp(userName: String, passWord: String) {
-        fbAuth.createUser(withEmail: userName, password: passWord) { authResult, error in
+    func signUp(email: String, password: String) {
+        fbAuth.createUser(withEmail: email, password: password) { authResult, error in
             guard error == nil else {
                 print(String(describing: error))
                 return
@@ -44,7 +44,23 @@ class ViewModel: ObservableObject {
         }
     }
     
-    // TODO: add sign in method
+    
+    func signIn(email: String, password: String) {
+        fbAuth.signIn(withEmail: email, password: password) {  authResult, error in
+            guard error == nil else {
+                print(String(describing: error))
+                return
+            }
+            if let authResult {
+                print("sucessful login: \(authResult.user.uid)")
+                self.authState = .DidSignIn
+            }
+        }
+    }
+    
+
+    
+   
     
     // MARK: - UsersView Functions
     
