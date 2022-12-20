@@ -44,9 +44,8 @@ class ViewModel: ObservableObject {
         }
     }
     
-    
     func signIn(email: String, password: String) {
-        fbAuth.signIn(withEmail: email, password: password) {  authResult, error in
+        fbAuth.signIn(withEmail: email, password: password) { authResult, error in
             guard error == nil else {
                 print(String(describing: error))
                 return
@@ -58,12 +57,9 @@ class ViewModel: ObservableObject {
         }
     }
     
-
-    
-   
-    
     // MARK: - UsersView Functions
-    
+
+    // TODO: create a User (email, id) and collet User() in users
     func fetchUsers() {
         db.collection("users").getDocuments { snapShot, error in
             guard error == nil else {

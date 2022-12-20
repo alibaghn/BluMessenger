@@ -17,3 +17,8 @@ struct Document: Codable{
     var sender: String
     var message: String
 }
+
+struct User: Codable {
+    var id: String
+    var email: String
+}
