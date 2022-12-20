@@ -17,12 +17,9 @@ struct UsersView: View {
             VStack {
                 NavigationView {
                     LazyVGrid(columns: columns) {
-                        ForEach(viewModel.users.filter { user in
-                            user != viewModel.fbAuth.currentUser?.uid
-                        }, id: \.self) { user in
-                            NavigationLink(destination: ChatView(userId: user)) {
-                                UserAvatar(id: user)
-        
+                        ForEach(viewModel.users) { user in
+                            NavigationLink(destination: ChatView(userId: user.email)) {
+                                UserAvatar(id: user.email)
                             }
                         }
                     }

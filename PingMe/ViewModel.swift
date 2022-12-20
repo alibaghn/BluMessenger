@@ -6,6 +6,7 @@
 //
 
 import Firebase
+import FirebaseFirestoreSwift
 import Foundation
 
 class ViewModel: ObservableObject {
@@ -13,7 +14,8 @@ class ViewModel: ObservableObject {
     let fbAuth = Auth.auth()
     @Published var messages: [String] = []
     @Published var authState = AuthState.WillSignUp
-    @Published var users: [String] = []
+    @Published var users: [User] = []
+    @Published var userEmails : [String] = []
     @Published var didContentViewLoaded = false
   
     // MARK: - LoginView Functions
@@ -59,16 +61,20 @@ class ViewModel: ObservableObject {
     
     // MARK: - UsersView Functions
 
-    // TODO: create a User (email, id) and collet User() in users
     func fetchUsers() {
         db.collection("users").getDocuments { snapShot, error in
             guard error == nil else {
                 print(String(describing: error))
                 return
             }
+            
             if let snapShot {
-                self.users = snapShot.documents.map { doc in
-                    doc.get("id") as! String
+                self.users = snapShot.documents.compactMap {
+                    try? $0.data(as: User.self)
+                }
+                
+                self.userEmails = self.users.map { user in
+                    user.email
                 }
             }
         }

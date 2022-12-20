@@ -18,7 +18,7 @@ struct Document: Codable{
     var message: String
 }
 
-struct User: Codable {
+struct User: Codable, Hashable, Identifiable {
     var id: String
     var email: String
 }
