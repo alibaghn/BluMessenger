@@ -26,6 +26,8 @@ struct LoginView: View {
                     viewModel.authState = .WillSignUp
                     viewModel.signUp(email: email, password: password)
                 }.background(.yellow)
+                    
+                    .alert(viewModel.signUpErrorDescription, isPresented: $viewModel.signUpError) {}
 
                 Button("Sign-in") {
                     viewModel.authState = .WillSignIn
@@ -48,6 +50,7 @@ struct LoginView: View {
                     viewModel.signIn(email: email, password: password)
 
                 }.background(.yellow)
+                    .alert(viewModel.signInErrorDescription, isPresented: $viewModel.signInError) {}
 
                 Button("Sign-up") {
                     viewModel.authState = .WillSignUp

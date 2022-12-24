@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UsersView: View {
     @EnvironmentObject var viewModel: ViewModel
-    let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
     var body: some View {
         switch viewModel.authState {
@@ -26,11 +26,19 @@ struct UsersView: View {
                     .onAppear {
                         viewModel.addAuthListener()
                         viewModel.fetchUsers()
-                    }
-                }
+                    }.toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button {
+                                viewModel.signOut()
+                            } label: {
+                                HStack{
+                                    Image(systemName: "door.left.hand.open")
+                                    Text("Log out")
+                                }
+                            }
 
-                Button("Sign Out") {
-                    viewModel.signOut()
+                        }
+                    }
                 }
             }
 

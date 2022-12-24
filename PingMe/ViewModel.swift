@@ -8,6 +8,7 @@
 import Firebase
 import FirebaseFirestoreSwift
 import Foundation
+import SwiftUI
 
 class ViewModel: ObservableObject {
     let db = Firestore.firestore()
@@ -15,18 +16,21 @@ class ViewModel: ObservableObject {
     @Published var messages: [String] = []
     @Published var authState = AuthState.WillSignUp
     @Published var users: [User] = []
-    @Published var userEmails : [String] = []
+    @Published var userEmails: [String] = []
     @Published var didContentViewLoaded = false
+    @Published var signUpError = false
+    @Published var signUpErrorDescription = ""
+    @Published var signInError = false
+    @Published var signInErrorDescription = ""
   
     // MARK: - LoginView Functions
 
     func addAuthListener() {
         fbAuth.addStateDidChangeListener { _, user in
-            print("Auth status changed")
             if let user {
                 print("Welcome \(String(describing: user.uid))")
                 self.authState = .DidSignIn
-            
+                
             } else {
                 return
             }
@@ -37,6 +41,8 @@ class ViewModel: ObservableObject {
         fbAuth.createUser(withEmail: email, password: password) { authResult, error in
             guard error == nil else {
                 print(String(describing: error))
+                self.signUpErrorDescription = error!.localizedDescription
+                self.signUpError = true
                 return
             }
             if let authResult {
@@ -49,7 +55,8 @@ class ViewModel: ObservableObject {
     func signIn(email: String, password: String) {
         fbAuth.signIn(withEmail: email, password: password) { authResult, error in
             guard error == nil else {
-                print(String(describing: error))
+                self.signInErrorDescription = error!.localizedDescription
+                self.signInError = true
                 return
             }
             if let authResult {
