@@ -15,7 +15,7 @@ struct ChatView: View {
     let userId: String
     @State var documents: [Document] = []
     @State var listener: ListenerRegistration?
-    
+
     var groupId: String {
         if userId < viewModel.fbAuth.currentUser!.uid {
             return userId + viewModel.fbAuth.currentUser!.uid
@@ -33,10 +33,21 @@ struct ChatView: View {
                         Text(doc.message).frame(maxWidth: .infinity, alignment: .trailing) :
                         Text(doc.message).frame(maxWidth: .infinity, alignment: .leading)
                 }
-                TextField("Placeholder", text: $textFieldValue)
-                Button("Send") {
-                    sendMessage(text: textFieldValue)
-                    textFieldValue = ""
+                ZStack(alignment: .trailing) {
+                    TextField("Message", text: $textFieldValue)
+                    if textFieldValue != "" {
+                        Button {
+                            guard textFieldValue != "" else { return }
+                            sendMessage(text: textFieldValue)
+                            textFieldValue = ""
+                        } label: {
+                            Image(systemName: "paperplane.fill")
+                        }
+                    } else {
+                        Button {} label: {
+                            Image(systemName: "paperplane.fill").foregroundColor(.gray)
+                        }
+                    }
                 }
             }
             .padding()
