@@ -27,11 +27,13 @@ struct ChatView: View {
     var body: some View {
         NavigationView {
             VStack {
+                
+                
                 List(documents, id: \.date) { doc in
 
                     viewModel.fbAuth.currentUser?.uid == doc.sender ?
-                        Text(doc.message).frame(maxWidth: .infinity, alignment: .trailing) :
-                        Text(doc.message).frame(maxWidth: .infinity, alignment: .leading)
+                    TextBubble(message: doc.message, color: Color.green):
+                    TextBubble(message: doc.message, color: Color.blue)
                 }
                 ZStack(alignment: .trailing) {
                     TextField("Message", text: $textFieldValue)
@@ -93,11 +95,5 @@ extension ChatView {
 
     func removeSnapShotListener() {
         listener?.remove()
-    }
-
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ChatView(userId: "Test").environmentObject(ViewModel())
-        }
     }
 }

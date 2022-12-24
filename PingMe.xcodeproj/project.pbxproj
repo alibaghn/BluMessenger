@@ -44,6 +44,7 @@
 		0CFAE81129455FDD00E2D7D0 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE81029455FDD00E2D7D0 /* Model.swift */; };
 		0CFAE815294AB02C00E2D7D0 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE814294AB02C00E2D7D0 /* UsersView.swift */; };
 		0CFAE817294AD04800E2D7D0 /* UserAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE816294AD04800E2D7D0 /* UserAvatar.swift */; };
+		0CFAE8192957BEA500E2D7D0 /* TextBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE8182957BEA500E2D7D0 /* TextBubble.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		0CFAE81029455FDD00E2D7D0 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0CFAE814294AB02C00E2D7D0 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
 		0CFAE816294AD04800E2D7D0 /* UserAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatar.swift; sourceTree = "<group>"; };
+		0CFAE8182957BEA500E2D7D0 /* TextBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBubble.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				0CFAE7C52942E5E900E2D7D0 /* PingMeApp.swift */,
 				0CFAE7C72942E5E900E2D7D0 /* ChatView.swift */,
+				0CFAE8182957BEA500E2D7D0 /* TextBubble.swift */,
 				0CFAE80E2945555D00E2D7D0 /* LoginView.swift */,
 				0CFAE816294AD04800E2D7D0 /* UserAvatar.swift */,
 				0CFAE814294AB02C00E2D7D0 /* UsersView.swift */,
@@ -245,6 +248,7 @@
 				0CFAE81129455FDD00E2D7D0 /* Model.swift in Sources */,
 				0CFAE7C82942E5E900E2D7D0 /* ChatView.swift in Sources */,
 				0CFAE80D29452EA200E2D7D0 /* ViewModel.swift in Sources */,
+				0CFAE8192957BEA500E2D7D0 /* TextBubble.swift in Sources */,
 				0CFAE80F2945555D00E2D7D0 /* LoginView.swift in Sources */,
 				0CFAE7C62942E5E900E2D7D0 /* PingMeApp.swift in Sources */,
 				0CFAE815294AB02C00E2D7D0 /* UsersView.swift in Sources */,
