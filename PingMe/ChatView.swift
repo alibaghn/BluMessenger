@@ -15,7 +15,7 @@ struct ChatView: View {
     let userId: String
     @State var documents: [Document] = []
     @State var listener: ListenerRegistration?
-
+    
     var groupId: String {
         if userId < viewModel.fbAuth.currentUser!.uid {
             return userId + viewModel.fbAuth.currentUser!.uid
@@ -27,12 +27,11 @@ struct ChatView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(documents,id: \.date) { doc in
-                    
+                List(documents, id: \.date) { doc in
+
                     viewModel.fbAuth.currentUser?.uid == doc.sender ?
-                    Text(doc.message).frame(maxWidth:.infinity, alignment: .trailing) :
-                    Text(doc.message).frame(maxWidth:.infinity, alignment: .leading)
-                 
+                        Text(doc.message).frame(maxWidth: .infinity, alignment: .trailing) :
+                        Text(doc.message).frame(maxWidth: .infinity, alignment: .leading)
                 }
                 TextField("Placeholder", text: $textFieldValue)
                 Button("Send") {
@@ -64,7 +63,6 @@ extension ChatView {
             }
         }
     }
-
 
     func addSnapShotListener() {
         listener = viewModel.db.collection("chats")

@@ -13,6 +13,19 @@ struct LoginView: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var rePassword: String = ""
+    @State var passwordMatchError = false
+    let passwordMatchDescription = "Passwords do not match"
+
+    func signUp() {
+        guard !password.isEmpty, !rePassword.isEmpty else {
+            return
+        }
+        guard password == rePassword else {
+            passwordMatchError = true
+            return
+        }
+        viewModel.signUp(email: email, password: password)
+    }
 
     var body: some View {
         switch viewModel.authState {
@@ -24,9 +37,10 @@ struct LoginView: View {
 
                 Button("Sign-up") {
                     viewModel.authState = .WillSignUp
-                    viewModel.signUp(email: email, password: password)
+                    signUp()
+
                 }.background(.yellow)
-                    
+                    .alert(passwordMatchDescription, isPresented: $passwordMatchError, actions: {})
                     .alert(viewModel.signUpErrorDescription, isPresented: $viewModel.signUpError) {}
 
                 Button("Sign-in") {
@@ -50,6 +64,7 @@ struct LoginView: View {
                     viewModel.signIn(email: email, password: password)
 
                 }.background(.yellow)
+
                     .alert(viewModel.signInErrorDescription, isPresented: $viewModel.signInError) {}
 
                 Button("Sign-up") {
