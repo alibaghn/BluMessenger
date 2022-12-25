@@ -13,7 +13,7 @@ struct UserAvatar: View {
         
         VStack{
             Image(systemName: "person.crop.circle")
-            Text(id)
+            Text(id.components(separatedBy: "@")[0])
         }
     }
 }
