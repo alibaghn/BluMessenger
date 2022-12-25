@@ -9,26 +9,21 @@ import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var viewModel: ViewModel
-    @State var email: String = ""
-    @State var password: String = ""
-    @State var rePassword: String = ""
-    @State var passwordMatchError = false
-    let passwordMatchDescription = "Passwords do not match"
 
     var body: some View {
         switch viewModel.authState {
         case .WillSignUp:
             Color(#colorLiteral(red: 0.4513868093, green: 0.9930960536, blue: 1, alpha: 1)).ignoresSafeArea().overlay {
                 VStack {
-                    CustomTextField(title: "Email", text: email)
-                    CustomTextField(title: "Password", text: password)
-                    CustomTextField(title: "Retype Password", text: rePassword)
+                    CustomTextField(title: "Email", text: viewModel.email)
+                    CustomTextField(title: "Password", text: viewModel.password)
+                    CustomTextField(title: "Retype Password", text: viewModel.rePassword)
 
                     CustomButton(closure: {
                         viewModel.authState = .WillSignUp
-                        signUp()
+                        viewModel.signUp()
                     }, text: "Sign Up", tintColor: .accentColor)
-                        .alert(passwordMatchDescription, isPresented: $passwordMatchError, actions: {})
+                    .alert(viewModel.passwordMatchDescription, isPresented: $viewModel.passwordMatchError, actions: {})
                         .alert(viewModel.signUpErrorDescription, isPresented: $viewModel.signUpError) {}
 
                     CustomButton(closure: {
@@ -47,12 +42,12 @@ struct LoginView: View {
         case .WillSignIn, .DidSignOut:
             Color(#colorLiteral(red: 0.4513868093, green: 0.9930960536, blue: 1, alpha: 1)).ignoresSafeArea().overlay {
                 VStack {
-                    CustomTextField(title: "Email", text: email)
-                    CustomTextField(title: "Password", text: password)
+                    CustomTextField(title: "Email", text: viewModel.email)
+                    CustomTextField(title: "Password", text: viewModel.password)
 
                     CustomButton(closure: {
                         viewModel.authState = .WillSignIn
-                        signIn()
+                        viewModel.signIn()
                     }, text: "Sign In", tintColor: .accentColor)
                         .alert(viewModel.signInErrorDescription, isPresented: $viewModel.signInError) {}
 
@@ -72,22 +67,3 @@ struct LoginView: View {
     }
 }
 
-// MARK: - Functions
-
-extension LoginView {
-    func signUp() {
-        guard !password.isEmpty, !rePassword.isEmpty else {
-            return
-        }
-        guard password == rePassword else {
-            passwordMatchError = true
-            return
-        }
-        viewModel.signUp(email: email, password: password)
-    }
-
-    func signIn() {
-        guard password.isEmpty else { return }
-        viewModel.signIn(email: email, password: password)
-    }
-}

@@ -22,7 +22,13 @@ class ViewModel: ObservableObject {
     @Published var signUpErrorDescription = ""
     @Published var signInError = false
     @Published var signInErrorDescription = ""
-  
+    @Published var passwordMatchError = false
+    @Published var passwordMatchDescription = "Passwords do not match"
+    @Published var email: String = ""
+    @Published var password: String = ""
+    @Published var rePassword: String = ""
+    
+    
     // MARK: - LoginView Functions
 
     func addAuthListener() {
@@ -37,7 +43,14 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func signUp(email: String, password: String) {
+    func signUp() {
+        guard !password.isEmpty, !rePassword.isEmpty else {
+            return
+        }
+        guard password == rePassword else {
+            passwordMatchError = true
+            return
+        }
         fbAuth.createUser(withEmail: email, password: password) { authResult, error in
             guard error == nil else {
                 print(String(describing: error))
@@ -52,7 +65,8 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func signIn(email: String, password: String) {
+    func signIn() {
+        guard password.isEmpty else { return }
         fbAuth.signIn(withEmail: email, password: password) { authResult, error in
             guard error == nil else {
                 self.signInErrorDescription = error!.localizedDescription
