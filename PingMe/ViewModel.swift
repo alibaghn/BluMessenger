@@ -27,8 +27,7 @@ class ViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var rePassword: String = ""
-    
-    
+ 
     // MARK: - LoginView Functions
 
     func addAuthListener() {
@@ -44,6 +43,10 @@ class ViewModel: ObservableObject {
     }
     
     func signUp() {
+        print("hi")
+        print(email)
+        print(password)
+        print(rePassword)
         guard !password.isEmpty, !rePassword.isEmpty else {
             return
         }
@@ -128,6 +131,18 @@ class ViewModel: ObservableObject {
                     self.db.collection("groups").addDocument(data: ["members": [id, self.fbAuth.currentUser!.uid], "groupId": groupId])
                     print("new group added")
                 }
+            }
+        }
+    }
+    
+    // MARK: - ChatView Functions
+    
+    func sendMessage(text: String, groupId: String) {
+        db.collection("chats").addDocument(data: ["message": "\(text)", "id": groupId, "date": Date().timeIntervalSince1970, "sender": fbAuth.currentUser!.uid]) {
+            error in
+            guard error == nil else {
+                print("An error occured: \(String(describing: error))")
+                return
             }
         }
     }

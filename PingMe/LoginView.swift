@@ -15,9 +15,9 @@ struct LoginView: View {
         case .WillSignUp:
             Color(#colorLiteral(red: 0.4513868093, green: 0.9930960536, blue: 1, alpha: 1)).ignoresSafeArea().overlay {
                 VStack {
-                    CustomTextField(title: "Email", text: viewModel.email)
-                    CustomTextField(title: "Password", text: viewModel.password)
-                    CustomTextField(title: "Retype Password", text: viewModel.rePassword)
+                    CustomTextField(title: "Email", text: $viewModel.email)
+                    CustomTextField(title: "Password", text: $viewModel.password)
+                    CustomTextField(title: "Retype Password", text: $viewModel.rePassword)
 
                     CustomButton(closure: {
                         viewModel.authState = .WillSignUp
@@ -42,8 +42,8 @@ struct LoginView: View {
         case .WillSignIn, .DidSignOut:
             Color(#colorLiteral(red: 0.4513868093, green: 0.9930960536, blue: 1, alpha: 1)).ignoresSafeArea().overlay {
                 VStack {
-                    CustomTextField(title: "Email", text: viewModel.email)
-                    CustomTextField(title: "Password", text: viewModel.password)
+                    CustomTextField(title: "Email", text: $viewModel.email)
+                    CustomTextField(title: "Password", text: $viewModel.password)
 
                     CustomButton(closure: {
                         viewModel.authState = .WillSignIn

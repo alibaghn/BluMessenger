@@ -27,20 +27,18 @@ struct ChatView: View {
     var body: some View {
         NavigationView {
             VStack {
-                
-                
                 List(documents, id: \.date) { doc in
 
                     viewModel.fbAuth.currentUser?.uid == doc.sender ?
-                    TextBubble(message: doc.message, color: Color.green):
-                    TextBubble(message: doc.message, color: Color.blue)
+                        TextBubble(message: doc.message, color: Color.green) :
+                        TextBubble(message: doc.message, color: Color.blue)
                 }
                 ZStack(alignment: .trailing) {
                     TextField("Message", text: $textFieldValue)
                     if textFieldValue != "" {
                         Button {
                             guard textFieldValue != "" else { return }
-                            sendMessage(text: textFieldValue)
+                            viewModel.sendMessage(text: textFieldValue, groupId: groupId)
                             textFieldValue = ""
                         } label: {
                             Image(systemName: "paperplane.fill")
@@ -59,7 +57,7 @@ struct ChatView: View {
             }
 
             .onDisappear {
-                removeSnapShotListener()
+                listener?.remove()
             }
         }
         .navigationTitle(userId)
@@ -67,16 +65,6 @@ struct ChatView: View {
 }
 
 extension ChatView {
-    func sendMessage(text: String) {
-        viewModel.db.collection("chats").addDocument(data: ["message": "\(text)", "id": groupId, "date": Date().timeIntervalSince1970, "sender": viewModel.fbAuth.currentUser!.uid]) {
-            error in
-            guard error == nil else {
-                print("An error occured: \(String(describing: error))")
-                return
-            }
-        }
-    }
-
     func addSnapShotListener() {
         listener = viewModel.db.collection("chats")
             .whereField("id", isEqualTo: groupId)
@@ -91,9 +79,5 @@ extension ChatView {
                     print(documents)
                 }
             }
-    }
-
-    func removeSnapShotListener() {
-        listener?.remove()
     }
 }
