@@ -12,15 +12,15 @@ import SwiftUI
 struct ChatView: View {
     @EnvironmentObject var viewModel: ViewModel
     @State var textFieldValue: String = ""
-    let userId: String
+    let user: User
     @State var documents: [Document] = []
     @State var listener: ListenerRegistration?
 
     var groupId: String {
-        if userId < viewModel.fbAuth.currentUser!.uid {
-            return userId + viewModel.fbAuth.currentUser!.uid
+        if user.id < viewModel.fbAuth.currentUser!.uid {
+            return user.id + viewModel.fbAuth.currentUser!.uid
         } else {
-            return viewModel.fbAuth.currentUser!.uid + userId
+            return viewModel.fbAuth.currentUser!.uid + user.id
         }
     }
 
@@ -52,7 +52,7 @@ struct ChatView: View {
             }
             .padding()
             .onAppear {
-                viewModel.createGroup(with: userId)
+                viewModel.createGroupId(with: user.id)
                 addSnapShotListener()
             }
 
@@ -60,7 +60,7 @@ struct ChatView: View {
                 listener?.remove()
             }
         }
-        .navigationTitle(userId)
+        .navigationTitle(user.email)
     }
 }
 

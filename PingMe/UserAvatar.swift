@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct UserAvatar: View {
-    let id:String
+    let email: String
     var body: some View {
-        
-        VStack{
+        VStack {
             Image(systemName: "person.crop.circle")
-            Text(id.components(separatedBy: "@")[0])
+            Text(email)
         }
     }
 }
 
 struct UserView_Previews: PreviewProvider {
     static var previews: some View {
-        UserAvatar(id: "Ali")
+        UserAvatar(email: "Ali")
     }
 }

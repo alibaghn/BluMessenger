@@ -18,8 +18,8 @@ struct UsersView: View {
                 NavigationView {
                     LazyVGrid(columns: columns) {
                         ForEach(viewModel.users) { user in
-                            NavigationLink(destination: ChatView(userId: user.email)) {
-                                UserAvatar(id: user.email).padding(10)
+                            NavigationLink(destination: ChatView(user: user)) {
+                                UserAvatar(email: user.email).padding(10)
                             }
                         }
                     }

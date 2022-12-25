@@ -43,10 +43,6 @@ class ViewModel: ObservableObject {
     }
     
     func signUp() {
-        print("hi")
-        print(email)
-        print(password)
-        print(rePassword)
         guard !password.isEmpty, !rePassword.isEmpty else {
             return
         }
@@ -69,7 +65,7 @@ class ViewModel: ObservableObject {
     }
     
     func signIn() {
-        guard password.isEmpty else { return }
+        guard !password.isEmpty else { return }
         fbAuth.signIn(withEmail: email, password: password) { authResult, error in
             guard error == nil else {
                 self.signInErrorDescription = error!.localizedDescription
@@ -113,7 +109,7 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func createGroup(with id: String) {
+    func createGroupId(with id: String) {
         var groupId: String {
             if id < fbAuth.currentUser!.uid {
                 return id + fbAuth.currentUser!.uid

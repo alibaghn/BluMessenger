@@ -20,10 +20,10 @@ struct LoginView: View {
                     CustomTextField(title: "Retype Password", text: $viewModel.rePassword)
 
                     CustomButton(closure: {
-                        viewModel.authState = .WillSignUp
+//                        viewModel.authState = .WillSignUp
                         viewModel.signUp()
                     }, text: "Sign Up", tintColor: .accentColor)
-                    .alert(viewModel.passwordMatchDescription, isPresented: $viewModel.passwordMatchError, actions: {})
+                        .alert(viewModel.passwordMatchDescription, isPresented: $viewModel.passwordMatchError, actions: {})
                         .alert(viewModel.signUpErrorDescription, isPresented: $viewModel.signUpError) {}
 
                     CustomButton(closure: {
@@ -33,8 +33,7 @@ struct LoginView: View {
                 }
                 .padding()
                 .onAppear {
-                    print("Here it is!")
-                    viewModel.fetchUsers()
+//                    viewModel.fetchUsers()
                     viewModel.addAuthListener()
                 }
             }
@@ -46,7 +45,8 @@ struct LoginView: View {
                     CustomTextField(title: "Password", text: $viewModel.password)
 
                     CustomButton(closure: {
-                        viewModel.authState = .WillSignIn
+                        print("pressed sign in")
+//                        viewModel.authState = .WillSignIn
                         viewModel.signIn()
                     }, text: "Sign In", tintColor: .accentColor)
                         .alert(viewModel.signInErrorDescription, isPresented: $viewModel.signInError) {}
@@ -66,4 +66,3 @@ struct LoginView: View {
         }
     }
 }
-
