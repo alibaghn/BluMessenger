@@ -17,7 +17,7 @@ struct UsersView: View {
             
                 VStack {
                     
-                    NavigationView {
+                    NavigationStack {
                         K.bgColor.ignoresSafeArea().overlay{
                         LazyVGrid(columns: columns) {
                             ForEach(viewModel.users) { user in

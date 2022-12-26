@@ -25,7 +25,7 @@ struct ChatView: View {
     }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 List(documents, id: \.date) { doc in
                     viewModel.fbAuth.currentUser?.uid == doc.sender ?
