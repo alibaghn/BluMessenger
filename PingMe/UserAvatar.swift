@@ -12,8 +12,7 @@ struct UserAvatar: View {
     var body: some View {
         VStack {
             Image(systemName: "person.crop.circle")
-            Text(email)
+            Text(email.components(separatedBy: "@")[0])
         }
     }
 }
-

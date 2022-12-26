@@ -10,8 +10,9 @@ import SwiftUI
 struct TextBubble: View {
     let message: String
     let color: Color
+    let alignment: Alignment
     var body: some View {
-        Text(message).frame(maxWidth: .infinity, alignment: .trailing).listRowBackground(RoundedRectangle(cornerRadius: 20)
+        Text(message).frame(maxWidth: .infinity, alignment: alignment).listRowBackground(RoundedRectangle(cornerRadius: 20)
             .background(color)
             .foregroundColor(.clear)
             .padding(

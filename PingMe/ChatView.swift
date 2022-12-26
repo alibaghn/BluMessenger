@@ -28,10 +28,9 @@ struct ChatView: View {
         NavigationView {
             VStack {
                 List(documents, id: \.date) { doc in
-
                     viewModel.fbAuth.currentUser?.uid == doc.sender ?
-                        TextBubble(message: doc.message, color: Color.green) :
-                        TextBubble(message: doc.message, color: Color.blue)
+                        TextBubble(message: doc.message, color: Color.green, alignment: .trailing) :
+                        TextBubble(message: doc.message, color: Color.blue, alignment: .leading)
                 }.scrollContentBackground(.hidden)
                     .background(K.bgColor)
 
