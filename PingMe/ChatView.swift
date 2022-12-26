@@ -32,7 +32,9 @@ struct ChatView: View {
                     viewModel.fbAuth.currentUser?.uid == doc.sender ?
                         TextBubble(message: doc.message, color: Color.green) :
                         TextBubble(message: doc.message, color: Color.blue)
-                }
+                }.scrollContentBackground(.hidden)
+                    .background(K.bgColor)
+
                 ZStack(alignment: .trailing) {
                     TextField("Message", text: $textFieldValue)
                     if textFieldValue != "" {

@@ -17,8 +17,3 @@ struct UserAvatar: View {
     }
 }
 
-struct UserView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserAvatar(email: "Ali")
-    }
-}

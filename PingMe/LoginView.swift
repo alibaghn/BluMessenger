@@ -13,14 +13,13 @@ struct LoginView: View {
     var body: some View {
         switch viewModel.authState {
         case .WillSignUp:
-            Color(#colorLiteral(red: 0.4513868093, green: 0.9930960536, blue: 1, alpha: 1)).ignoresSafeArea().overlay {
+            K.bgColor.ignoresSafeArea().overlay {
                 VStack {
                     CustomTextField(title: "Email", text: $viewModel.email)
                     CustomTextField(title: "Password", text: $viewModel.password)
                     CustomTextField(title: "Retype Password", text: $viewModel.rePassword)
 
                     CustomButton(closure: {
-//                        viewModel.authState = .WillSignUp
                         viewModel.signUp()
                     }, text: "Sign Up", tintColor: .accentColor)
                         .alert(viewModel.passwordMatchDescription, isPresented: $viewModel.passwordMatchError, actions: {})
@@ -33,20 +32,18 @@ struct LoginView: View {
                 }
                 .padding()
                 .onAppear {
-//                    viewModel.fetchUsers()
                     viewModel.addAuthListener()
                 }
             }
 
         case .WillSignIn, .DidSignOut:
-            Color(#colorLiteral(red: 0.4513868093, green: 0.9930960536, blue: 1, alpha: 1)).ignoresSafeArea().overlay {
+            K.bgColor.ignoresSafeArea().overlay {
                 VStack {
                     CustomTextField(title: "Email", text: $viewModel.email)
                     CustomTextField(title: "Password", text: $viewModel.password)
 
                     CustomButton(closure: {
                         print("pressed sign in")
-//                        viewModel.authState = .WillSignIn
                         viewModel.signIn()
                     }, text: "Sign In", tintColor: .accentColor)
                         .alert(viewModel.signInErrorDescription, isPresented: $viewModel.signInError) {}
