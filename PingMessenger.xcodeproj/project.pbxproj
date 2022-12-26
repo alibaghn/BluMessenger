@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0CFAE7C62942E5E900E2D7D0 /* PingMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE7C52942E5E900E2D7D0 /* PingMeApp.swift */; };
+		0CFAE7C62942E5E900E2D7D0 /* PingMessengerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE7C52942E5E900E2D7D0 /* PingMessengerApp.swift */; };
 		0CFAE7C82942E5E900E2D7D0 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE7C72942E5E900E2D7D0 /* ChatView.swift */; };
 		0CFAE7CA2942E5EA00E2D7D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CFAE7C92942E5EA00E2D7D0 /* Assets.xcassets */; };
 		0CFAE7CD2942E5EA00E2D7D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CFAE7CC2942E5EA00E2D7D0 /* Preview Assets.xcassets */; };
@@ -52,7 +52,7 @@
 
 /* Begin PBXFileReference section */
 		0CFAE7C22942E5E900E2D7D0 /* PingMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PingMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0CFAE7C52942E5E900E2D7D0 /* PingMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingMeApp.swift; sourceTree = "<group>"; };
+		0CFAE7C52942E5E900E2D7D0 /* PingMessengerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingMessengerApp.swift; sourceTree = "<group>"; };
 		0CFAE7C72942E5E900E2D7D0 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		0CFAE7C92942E5EA00E2D7D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CFAE7CC2942E5EA00E2D7D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 		0CFAE7B92942E5E900E2D7D0 = {
 			isa = PBXGroup;
 			children = (
-				0CFAE7C42942E5E900E2D7D0 /* PingMe */,
+				0CFAE7C42942E5E900E2D7D0 /* PingMessenger */,
 				0CFAE7C32942E5E900E2D7D0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -122,10 +122,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0CFAE7C42942E5E900E2D7D0 /* PingMe */ = {
+		0CFAE7C42942E5E900E2D7D0 /* PingMessenger */ = {
 			isa = PBXGroup;
 			children = (
-				0CFAE7C52942E5E900E2D7D0 /* PingMeApp.swift */,
+				0CFAE7C52942E5E900E2D7D0 /* PingMessengerApp.swift */,
 				0CFAE7C72942E5E900E2D7D0 /* ChatView.swift */,
 				0CFAE8182957BEA500E2D7D0 /* TextBubble.swift */,
 				0CFAE80E2945555D00E2D7D0 /* LoginView.swift */,
@@ -140,7 +140,7 @@
 				0CFAE7D3294301D400E2D7D0 /* GoogleService-Info.plist */,
 				0CFAE7CB2942E5EA00E2D7D0 /* Preview Content */,
 			);
-			path = PingMe;
+			path = PingMessenger;
 			sourceTree = "<group>";
 		};
 		0CFAE7CB2942E5EA00E2D7D0 /* Preview Content */ = {
@@ -261,7 +261,7 @@
 				0CFAE8192957BEA500E2D7D0 /* TextBubble.swift in Sources */,
 				0CFAE81D2957E4C500E2D7D0 /* CustomButton.swift in Sources */,
 				0CFAE80F2945555D00E2D7D0 /* LoginView.swift in Sources */,
-				0CFAE7C62942E5E900E2D7D0 /* PingMeApp.swift in Sources */,
+				0CFAE7C62942E5E900E2D7D0 /* PingMessengerApp.swift in Sources */,
 				0CFAE815294AB02C00E2D7D0 /* UsersView.swift in Sources */,
 				0CFAE817294AD04800E2D7D0 /* UserAvatar.swift in Sources */,
 				0CFAE81B2957DFD100E2D7D0 /* CustomTextField.swift in Sources */,
@@ -392,7 +392,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PingMe/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PingMessenger/Preview Content\"";
 				DEVELOPMENT_TEAM = XX4UPJ8K28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -422,7 +422,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PingMe/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PingMessenger/Preview Content\"";
 				DEVELOPMENT_TEAM = XX4UPJ8K28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

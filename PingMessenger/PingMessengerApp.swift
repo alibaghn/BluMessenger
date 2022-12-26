@@ -10,7 +10,7 @@ import FirebaseCore
 import SwiftUI
 
 @main
-struct PingMeApp: App {
+struct PingMessengerApp: App {
     @StateObject var viewModel = ViewModel()
     init() {
         FirebaseApp.configure()
@@ -24,4 +24,4 @@ struct PingMeApp: App {
     }
 }
 
-//
+// Testing xcode cloud
