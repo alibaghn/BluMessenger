@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>282882434530-7oelofff501cd9upc5p8u7olk62ashou.apps.googleusercontent.com</string>
+	<string>282882434530-3e1e2ijfark1is3v2vb79bmj76901n1e.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.282882434530-7oelofff501cd9upc5p8u7olk62ashou</string>
+	<string>com.googleusercontent.apps.282882434530-3e1e2ijfark1is3v2vb79bmj76901n1e</string>
 	<key>API_KEY</key>
 	<string>AIzaSyALvM4krhiSiLcENn9IjfF6ix0kEQo7h8M</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,22 +13,22 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.alibagherinia.PingMe</string>
+	<string>com.alibagherinia.AmazingMessenger</string>
 	<key>PROJECT_ID</key>
 	<string>pingme-92475</string>
 	<key>STORAGE_BUCKET</key>
 	<string>pingme-92475.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:282882434530:ios:939e71a596ee7acc3585bb</string>
+	<string>1:282882434530:ios:1415d222a77c0c2b3585bb</string>
 </dict>
 </plist>

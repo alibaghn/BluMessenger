@@ -10,7 +10,7 @@ import FirebaseCore
 import SwiftUI
 
 @main
-struct PingMessengerApp: App {
+struct AmazingMessengerApp: App {
     @StateObject var viewModel = ViewModel()
     init() {
         FirebaseApp.configure()
