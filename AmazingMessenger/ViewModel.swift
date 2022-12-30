@@ -27,6 +27,7 @@ class ViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var rePassword: String = ""
+    @Published var currentUser: FirebaseAuth.User?
  
     // MARK: - LoginView Functions
 
@@ -34,6 +35,7 @@ class ViewModel: ObservableObject {
         fbAuth.addStateDidChangeListener { _, user in
             if let user {
                 print("Welcome \(String(describing: user.uid))")
+                self.currentUser = user
                 self.authState = .DidSignIn
                 
             } else {

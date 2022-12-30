@@ -14,13 +14,12 @@ struct UsersView: View {
     var body: some View {
         switch viewModel.authState {
         case .DidSignIn:
-            
-                VStack {
-                    
-                    NavigationStack {
-                        K.bgColor.ignoresSafeArea().overlay{
+
+            VStack {
+                NavigationStack {
+                    K.bgColor.ignoresSafeArea().overlay {
                         LazyVGrid(columns: columns) {
-                            ForEach(viewModel.users) { user in
+                            ForEach(viewModel.users.filter({$0.email != viewModel.currentUser?.email})) { user in
                                 NavigationLink(destination: ChatView(user: user)) {
                                     UserAvatar(email: user.email).padding(10)
                                 }
@@ -30,6 +29,13 @@ struct UsersView: View {
                             viewModel.addAuthListener()
                             viewModel.fetchUsers()
                         }.toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                HStack {
+                                    Image(systemName: "person.crop.circle")
+                                    Text(viewModel.currentUser!.email!.components(separatedBy: "@")[0])
+                                }
+                            }
+
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button {
                                     viewModel.signOut()
@@ -42,14 +48,12 @@ struct UsersView: View {
                             }
                         }
                     }
-                        .foregroundColor(.white)
+                    .foregroundColor(.white)
                 }
             }
-            
 
         default:
             LoginView().transition(.move(edge: .leading))
         }
     }
 }
-

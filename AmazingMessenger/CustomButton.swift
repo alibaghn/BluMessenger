@@ -15,8 +15,11 @@ struct CustomButton: View {
         Button {
             closure()
         } label: {
-            Text(text)
+            Text(text).frame(width: 100)
         }
+        
         .buttonStyle(.borderedProminent).tint(tintColor)
+        .padding(.top,10)
+        
     }
 }
