@@ -31,8 +31,18 @@ struct ChatView: View {
                     viewModel.fbAuth.currentUser?.uid == doc.sender ?
                         TextBubble(message: doc.message, color: Color.green, alignment: .trailing) :
                         TextBubble(message: doc.message, color: Color.blue, alignment: .leading)
-                }.scrollContentBackground(.hidden)
-                    .background(K.bgColor)
+                }
+                .background(K.bgColor)
+                .scrollContentBackground(.hidden)
+                .overlay(Group {
+                    if documents.isEmpty {
+                        ZStack {
+                            K.bgColor.ignoresSafeArea()
+                            Text("Start a Conversation!")
+                        }
+                    }
+                }
+                )
 
                 ZStack(alignment: .trailing) {
                     TextField("Message", text: $textFieldValue)
@@ -51,6 +61,7 @@ struct ChatView: View {
                     }
                 }
             }
+
             .padding()
             .onAppear {
                 viewModel.createGroupId(with: user.id)
@@ -62,6 +73,7 @@ struct ChatView: View {
             }
         }
         .navigationTitle(user.email)
+        .background(K.bgColor)
     }
 }
 
@@ -82,5 +94,3 @@ extension ChatView {
             }
     }
 }
-
-// Test
