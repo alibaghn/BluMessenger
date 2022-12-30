@@ -18,37 +18,42 @@ struct UsersView: View {
             VStack {
                 NavigationStack {
                     K.bgColor.ignoresSafeArea().overlay {
-                        LazyVGrid(columns: columns) {
-                            ForEach(viewModel.users.filter({$0.email != viewModel.currentUser?.email})) { user in
-                                NavigationLink(destination: ChatView(user: user)) {
-                                    UserAvatar(email: user.email).padding(10)
-                                }
-                            }
-                        }
-                        .onAppear {
-                            viewModel.addAuthListener()
-                            viewModel.fetchUsers()
-                        }.toolbar {
-                            ToolbarItem(placement: .navigationBarLeading) {
-                                HStack {
-                                    Image(systemName: "person.crop.circle")
-                                    Text(viewModel.currentUser!.email!.components(separatedBy: "@")[0])
-                                }
-                            }
-
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                Button {
-                                    viewModel.signOut()
-                                } label: {
-                                    HStack {
-                                        Image(systemName: "door.left.hand.open")
-                                        Text("Log out")
+                        ScrollView(.vertical) {
+                            LazyVGrid(columns: columns) {
+                                ForEach(viewModel.users.filter { $0.email != viewModel.currentUser?.email }) { user in
+                                    NavigationLink(destination: ChatView(user: user)) {
+                                        UserAvatar(email: user.email).padding(10)
                                     }
                                 }
                             }
+                            .onAppear {
+                                viewModel.addAuthListener()
+                                viewModel.fetchUsers()
+                            }.toolbar {
+                                ToolbarItem(placement: .navigationBarLeading) {
+                                    HStack {
+                                        Image(systemName: "person.crop.circle")
+                                        Text(viewModel.currentUser!.email!.components(separatedBy: "@")[0])
+                                    }
+                                }
+
+                                ToolbarItem(placement: .navigationBarTrailing) {
+                                    Button {
+                                        viewModel.signOut()
+                                    } label: {
+                                        HStack {
+                                            Image(systemName: "door.left.hand.open")
+                                            Text("Log out")
+                                        }
+                                    }
+                                }
+                                
+                            }
+                            .toolbarBackground(.visible, for: .navigationBar)
+                            .toolbarBackground(.blue, for: .navigationBar)
                         }
+                        .foregroundColor(.white)
                     }
-                    .foregroundColor(.white)
                 }
             }
 
