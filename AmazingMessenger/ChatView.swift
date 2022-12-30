@@ -72,7 +72,7 @@ struct ChatView: View {
                 listener?.remove()
             }
         }
-        .navigationTitle(user.email)
+        .navigationBarTitle(user.email, displayMode: .inline)
         .background(K.bgColor)
     }
 }

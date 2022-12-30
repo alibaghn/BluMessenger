@@ -15,7 +15,7 @@ struct UsersView: View {
             return viewModel.users.filter { $0.email != viewModel.currentUser?.email
             }
         } else {
-            return viewModel.users.filter { $0.email.contains(searchText) && $0.email != viewModel.currentUser?.email }
+            return viewModel.users.filter { $0.email.localizedCaseInsensitiveContains(searchText) && $0.email != viewModel.currentUser?.email }
         }
     }
 
@@ -36,7 +36,7 @@ struct UsersView: View {
                                     }
                                 }
                             }
-                            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+                            .searchable(text: $searchText,placement: .navigationBarDrawer(displayMode: .always),prompt: "Seach User ID")
                             .onAppear {
                                 viewModel.addAuthListener()
                                 viewModel.fetchUsers()
@@ -59,6 +59,7 @@ struct UsersView: View {
                                     }
                                 }
                             }
+
                             .toolbarBackground(.visible, for: .navigationBar)
                             .toolbarBackground(.blue, for: .navigationBar)
                         }
