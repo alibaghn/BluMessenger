@@ -27,22 +27,18 @@ struct ChatView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                List(documents, id: \.date) { doc in
-                    viewModel.fbAuth.currentUser?.uid == doc.sender ?
-                        TextBubble(message: doc.message, color: Color.green, alignment: .trailing) :
-                        TextBubble(message: doc.message, color: Color.blue, alignment: .leading)
-                }
-                .background(K.bgColor)
-                .scrollContentBackground(.hidden)
-                .overlay(Group {
-                    if documents.isEmpty {
-                        ZStack {
-                            K.bgColor.ignoresSafeArea()
-                            Text("Start a Conversation!")
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        ForEach(documents, id: \.date) { doc in
+                            viewModel.fbAuth.currentUser?.uid == doc.sender ?
+                                TextBubble(message: doc.message, color: Color.green, alignment: .trailing).id(doc.date) :
+                                TextBubble(message: doc.message, color: Color.blue, alignment: .leading).id(doc.date)
                         }
                     }
+                    .onChange(of: documents.count) { _ in
+                        proxy.scrollTo(documents.last?.date)
+                    }
                 }
-                )
 
                 ZStack(alignment: .trailing) {
                     CustomTextField(title: "Message", text: $textFieldValue)
@@ -94,3 +90,21 @@ extension ChatView {
             }
     }
 }
+
+//                    List(documents, id: \.date) { doc in
+//                        viewModel.fbAuth.currentUser?.uid == doc.sender ?
+//                            TextBubble(message: doc.message, color: Color.green, alignment: .trailing).id(doc.date) :
+//                            TextBubble(message: doc.message, color: Color.blue, alignment: .leading).id(doc.date)
+//                    }
+//
+//                    .background(K.bgColor)
+//                    .scrollContentBackground(.hidden)
+//                    .overlay(Group {
+//                        if documents.isEmpty {
+//                            ZStack {
+//                                K.bgColor.ignoresSafeArea()
+//                                Text("Start a Conversation!")
+//                            }
+//                        }
+//                    }
+//                    )
