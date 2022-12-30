@@ -45,7 +45,7 @@ struct ChatView: View {
                 )
 
                 ZStack(alignment: .trailing) {
-                    TextField("Message", text: $textFieldValue)
+                    CustomTextField(title: "Message", text: $textFieldValue)
                     if textFieldValue != "" {
                         Button {
                             guard textFieldValue != "" else { return }

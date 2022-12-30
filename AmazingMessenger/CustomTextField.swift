@@ -12,6 +12,7 @@ struct CustomTextField: View {
     @Binding var text: String
 
     var body: some View {
-        TextField(title, text: $text).textFieldStyle(.roundedBorder)
+        TextField(title, text: $text).padding(4).background(.white).cornerRadius(5)
+            
     }
 }
