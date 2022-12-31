@@ -21,7 +21,7 @@ struct LoginView: View {
 
                     CustomButton(closure: {
                         viewModel.signUp()
-                    }, text: "Sign Up", tintColor: .accentColor)
+                    }, text: "Sign Up", tintColor: .blue)
                         .alert(viewModel.passwordMatchDescription, isPresented: $viewModel.passwordMatchError, actions: {})
                         .alert(viewModel.signUpErrorDescription, isPresented: $viewModel.signUpError) {}
 
@@ -45,7 +45,7 @@ struct LoginView: View {
                     CustomButton(closure: {
                         print("pressed sign in")
                         viewModel.signIn()
-                    }, text: "Sign In", tintColor: .accentColor)
+                    }, text: "Sign In", tintColor: .blue)
                         .alert(viewModel.signInErrorDescription, isPresented: $viewModel.signInError) {}
 
                     CustomButton(closure: {

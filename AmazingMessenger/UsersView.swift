@@ -12,8 +12,7 @@ struct UsersView: View {
     @State var searchText = ""
     var searchResults: [User] {
         if searchText == "" {
-            return viewModel.users.filter { $0.email != viewModel.currentUser?.email
-            }
+            return []
         } else {
             return viewModel.users.filter { $0.email.localizedCaseInsensitiveContains(searchText) && $0.email != viewModel.currentUser?.email }
         }
@@ -36,11 +35,17 @@ struct UsersView: View {
                                     }
                                 }
                             }
-                            .searchable(text: $searchText,placement: .navigationBarDrawer(displayMode: .always),prompt: "Seach User ID")
+                            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Seach User ID")
+                            // TODO: change color of cancel button from blue to white
                             .onAppear {
+                                UISearchBar.appearance().tintColor = UIColor.white
                                 viewModel.addAuthListener()
                                 viewModel.fetchUsers()
-                            }.toolbar {
+                            }
+                            .onDisappear {
+                                searchText = ""
+                            }
+                            .toolbar {
                                 ToolbarItem(placement: .navigationBarLeading) {
                                     HStack {
                                         Image(systemName: "person.crop.circle")
@@ -59,7 +64,6 @@ struct UsersView: View {
                                     }
                                 }
                             }
-
                             .toolbarBackground(.visible, for: .navigationBar)
                             .toolbarBackground(.blue, for: .navigationBar)
                         }

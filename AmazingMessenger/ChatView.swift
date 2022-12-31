@@ -59,6 +59,8 @@ struct ChatView: View {
             }
 
             .padding()
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarBackground(.white, for: .navigationBar)
             .onAppear {
                 viewModel.createGroupId(with: user.id)
                 addSnapShotListener()
@@ -67,10 +69,12 @@ struct ChatView: View {
             .onDisappear {
                 listener?.remove()
             }
+            .background(K.bgColor)
+//
+            .navigationBarTitle(user.email, displayMode: .inline)
         }
-        .navigationBarTitle(user.email, displayMode: .inline)
-        .background(K.bgColor)
     }
+    
 }
 
 extension ChatView {
