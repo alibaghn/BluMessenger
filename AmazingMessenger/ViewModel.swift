@@ -28,6 +28,7 @@ class ViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var rePassword: String = ""
     @Published var currentUser: FirebaseAuth.User?
+    @Published var favUsers: [User] = []
  
     // MARK: - LoginView Functions
 

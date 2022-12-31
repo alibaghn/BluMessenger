@@ -12,7 +12,7 @@ struct UsersView: View {
     @State var searchText = ""
     var searchResults: [User] {
         if searchText == "" {
-            return []
+            return viewModel.favUsers
         } else {
             return viewModel.users.filter { $0.email.localizedCaseInsensitiveContains(searchText) && $0.email != viewModel.currentUser?.email }
         }

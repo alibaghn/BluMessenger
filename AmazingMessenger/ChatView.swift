@@ -32,7 +32,7 @@ struct ChatView: View {
                         ForEach(documents, id: \.date) { doc in
                             viewModel.fbAuth.currentUser?.uid == doc.sender ?
                                 TextBubble(message: doc.message, color: Color.green, alignment: .trailing).id(doc.date) :
-                                TextBubble(message: doc.message, color: Color.blue, alignment: .leading).id(doc.date)
+                                TextBubble(message: doc.message, color: Color.white, alignment: .leading).id(doc.date)
                         }
                     }
                     .onChange(of: documents.count) { _ in
@@ -64,6 +64,7 @@ struct ChatView: View {
             .onAppear {
                 viewModel.createGroupId(with: user.id)
                 addSnapShotListener()
+                viewModel.favUsers.append(user)
             }
 
             .onDisappear {
@@ -74,7 +75,6 @@ struct ChatView: View {
             .navigationBarTitle(user.email, displayMode: .inline)
         }
     }
-    
 }
 
 extension ChatView {
