@@ -48,11 +48,11 @@ struct ChatView: View {
                             viewModel.sendMessage(text: textFieldValue, groupId: groupId)
                             textFieldValue = ""
                         } label: {
-                            Image(systemName: "paperplane.fill")
+                            Image(systemName: "paperplane.fill").padding(5)
                         }
                     } else {
                         Button {} label: {
-                            Image(systemName: "paperplane.fill").foregroundColor(.gray)
+                            Image(systemName: "paperplane.fill").foregroundColor(.gray).padding(5)
                         }
                     }
                 }
