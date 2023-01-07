@@ -10,7 +10,7 @@ import FirebaseCore
 import SwiftUI
 
 @main
-struct AmazingMessengerApp: App {
+struct BluMessengerApp: App {
     @StateObject var viewModel = ViewModel()
     init() {
         FirebaseApp.configure()
@@ -23,5 +23,3 @@ struct AmazingMessengerApp: App {
         }
     }
 }
-
-// Testing xcode cloud

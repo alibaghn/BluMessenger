@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0CBB93FE295A79D20095A319 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CBB93FD295A79D10095A319 /* GoogleService-Info.plist */; };
-		0CFAE7C62942E5E900E2D7D0 /* AmazingMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE7C52942E5E900E2D7D0 /* AmazingMessenger.swift */; };
+		0C8ABD22296A258B00754E11 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C8ABD21296A258B00754E11 /* GoogleService-Info.plist */; };
+		0CFAE7C62942E5E900E2D7D0 /* BlueMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE7C52942E5E900E2D7D0 /* BlueMessenger.swift */; };
 		0CFAE7C82942E5E900E2D7D0 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE7C72942E5E900E2D7D0 /* ChatView.swift */; };
 		0CFAE7CA2942E5EA00E2D7D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CFAE7C92942E5EA00E2D7D0 /* Assets.xcassets */; };
 		0CFAE7CD2942E5EA00E2D7D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CFAE7CC2942E5EA00E2D7D0 /* Preview Assets.xcassets */; };
@@ -51,9 +51,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0CBB93FD295A79D10095A319 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		0CFAE7C22942E5E900E2D7D0 /* AmazingMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmazingMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0CFAE7C52942E5E900E2D7D0 /* AmazingMessenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazingMessenger.swift; sourceTree = "<group>"; };
+		0C8ABD21296A258B00754E11 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0CFAE7C22942E5E900E2D7D0 /* BluMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CFAE7C52942E5E900E2D7D0 /* BlueMessenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueMessenger.swift; sourceTree = "<group>"; };
 		0CFAE7C72942E5E900E2D7D0 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		0CFAE7C92942E5EA00E2D7D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CFAE7CC2942E5EA00E2D7D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 		0CFAE7B92942E5E900E2D7D0 = {
 			isa = PBXGroup;
 			children = (
-				0CFAE7C42942E5E900E2D7D0 /* AmazingMessenger */,
+				0CFAE7C42942E5E900E2D7D0 /* BluMessenger */,
 				0CFAE7C32942E5E900E2D7D0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,15 +117,15 @@
 		0CFAE7C32942E5E900E2D7D0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0CFAE7C22942E5E900E2D7D0 /* AmazingMessenger.app */,
+				0CFAE7C22942E5E900E2D7D0 /* BluMessenger.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0CFAE7C42942E5E900E2D7D0 /* AmazingMessenger */ = {
+		0CFAE7C42942E5E900E2D7D0 /* BluMessenger */ = {
 			isa = PBXGroup;
 			children = (
-				0CFAE7C52942E5E900E2D7D0 /* AmazingMessenger.swift */,
+				0CFAE7C52942E5E900E2D7D0 /* BlueMessenger.swift */,
 				0CFAE7C72942E5E900E2D7D0 /* ChatView.swift */,
 				0CFAE8182957BEA500E2D7D0 /* TextBubble.swift */,
 				0CFAE80E2945555D00E2D7D0 /* LoginView.swift */,
@@ -136,11 +136,11 @@
 				0CFAE80C29452EA200E2D7D0 /* ViewModel.swift */,
 				0CFAE81029455FDD00E2D7D0 /* Model.swift */,
 				0CFAE81E29591C2700E2D7D0 /* Constants.swift */,
+				0C8ABD21296A258B00754E11 /* GoogleService-Info.plist */,
 				0CFAE7C92942E5EA00E2D7D0 /* Assets.xcassets */,
-				0CBB93FD295A79D10095A319 /* GoogleService-Info.plist */,
 				0CFAE7CB2942E5EA00E2D7D0 /* Preview Content */,
 			);
-			path = AmazingMessenger;
+			path = BluMessenger;
 			sourceTree = "<group>";
 		};
 		0CFAE7CB2942E5EA00E2D7D0 /* Preview Content */ = {
@@ -154,9 +154,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0CFAE7C12942E5E900E2D7D0 /* AmazingMessenger */ = {
+		0CFAE7C12942E5E900E2D7D0 /* BluMessenger */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0CFAE7D02942E5EA00E2D7D0 /* Build configuration list for PBXNativeTarget "AmazingMessenger" */;
+			buildConfigurationList = 0CFAE7D02942E5EA00E2D7D0 /* Build configuration list for PBXNativeTarget "BluMessenger" */;
 			buildPhases = (
 				0CFAE7BE2942E5E900E2D7D0 /* Sources */,
 				0CFAE7BF2942E5E900E2D7D0 /* Frameworks */,
@@ -166,7 +166,7 @@
 			);
 			dependencies = (
 			);
-			name = AmazingMessenger;
+			name = BluMessenger;
 			packageProductDependencies = (
 				0CFAE7D62943041400E2D7D0 /* FirebaseAnalytics */,
 				0CFAE7D82943041400E2D7D0 /* FirebaseAnalyticsOnDeviceConversion */,
@@ -197,7 +197,7 @@
 				0CFAE80A2943041400E2D7D0 /* FirebaseStorageCombine-Community */,
 			);
 			productName = PingMe;
-			productReference = 0CFAE7C22942E5E900E2D7D0 /* AmazingMessenger.app */;
+			productReference = 0CFAE7C22942E5E900E2D7D0 /* BluMessenger.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -215,7 +215,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0CFAE7BD2942E5E900E2D7D0 /* Build configuration list for PBXProject "AmazingMessenger" */;
+			buildConfigurationList = 0CFAE7BD2942E5E900E2D7D0 /* Build configuration list for PBXProject "BluMessenger" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -231,7 +231,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0CFAE7C12942E5E900E2D7D0 /* AmazingMessenger */,
+				0CFAE7C12942E5E900E2D7D0 /* BluMessenger */,
 			);
 		};
 /* End PBXProject section */
@@ -243,7 +243,7 @@
 			files = (
 				0CFAE7CD2942E5EA00E2D7D0 /* Preview Assets.xcassets in Resources */,
 				0CFAE7CA2942E5EA00E2D7D0 /* Assets.xcassets in Resources */,
-				0CBB93FE295A79D20095A319 /* GoogleService-Info.plist in Resources */,
+				0C8ABD22296A258B00754E11 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +261,7 @@
 				0CFAE8192957BEA500E2D7D0 /* TextBubble.swift in Sources */,
 				0CFAE81D2957E4C500E2D7D0 /* CustomButton.swift in Sources */,
 				0CFAE80F2945555D00E2D7D0 /* LoginView.swift in Sources */,
-				0CFAE7C62942E5E900E2D7D0 /* AmazingMessenger.swift in Sources */,
+				0CFAE7C62942E5E900E2D7D0 /* BlueMessenger.swift in Sources */,
 				0CFAE815294AB02C00E2D7D0 /* UsersView.swift in Sources */,
 				0CFAE817294AD04800E2D7D0 /* UserAvatar.swift in Sources */,
 				0CFAE81B2957DFD100E2D7D0 /* CustomTextField.swift in Sources */,
@@ -392,22 +392,22 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"AmazingMessenger/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BluMessenger/Preview Content\"";
 				DEVELOPMENT_TEAM = XX4UPJ8K28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Amazing Messenger";
+				INFOPLIST_KEY_CFBundleDisplayName = "Blu Messenger";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alibagherinia.AmazingMessenger;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alibagherinia.BluMessenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -422,22 +422,22 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"AmazingMessenger/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BluMessenger/Preview Content\"";
 				DEVELOPMENT_TEAM = XX4UPJ8K28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Amazing Messenger";
+				INFOPLIST_KEY_CFBundleDisplayName = "Blu Messenger";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alibagherinia.AmazingMessenger;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alibagherinia.BluMessenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -448,7 +448,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0CFAE7BD2942E5E900E2D7D0 /* Build configuration list for PBXProject "AmazingMessenger" */ = {
+		0CFAE7BD2942E5E900E2D7D0 /* Build configuration list for PBXProject "BluMessenger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CFAE7CE2942E5EA00E2D7D0 /* Debug */,
@@ -457,7 +457,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0CFAE7D02942E5EA00E2D7D0 /* Build configuration list for PBXNativeTarget "AmazingMessenger" */ = {
+		0CFAE7D02942E5EA00E2D7D0 /* Build configuration list for PBXNativeTarget "BluMessenger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CFAE7D12942E5EA00E2D7D0 /* Debug */,

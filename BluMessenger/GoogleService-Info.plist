@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>282882434530-3e1e2ijfark1is3v2vb79bmj76901n1e.apps.googleusercontent.com</string>
+	<string>282882434530-eg4v634naubh2p5jq83ljias5jta3u4b.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.282882434530-3e1e2ijfark1is3v2vb79bmj76901n1e</string>
+	<string>com.googleusercontent.apps.282882434530-eg4v634naubh2p5jq83ljias5jta3u4b</string>
 	<key>API_KEY</key>
 	<string>AIzaSyALvM4krhiSiLcENn9IjfF6ix0kEQo7h8M</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.alibagherinia.AmazingMessenger</string>
+	<string>com.alibagherinia.BluMessenger</string>
 	<key>PROJECT_ID</key>
 	<string>pingme-92475</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:282882434530:ios:1415d222a77c0c2b3585bb</string>
+	<string>1:282882434530:ios:be0c4e4012a098e83585bb</string>
 </dict>
 </plist>
