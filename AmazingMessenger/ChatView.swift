@@ -72,7 +72,7 @@ struct ChatView: View {
             }
             .background(K.bgColor)
 //
-            .navigationBarTitle(user.email, displayMode: .inline)
+            .navigationBarTitle(user.emailPrefix, displayMode: .inline)
         }
     }
 }
@@ -94,21 +94,3 @@ extension ChatView {
             }
     }
 }
-
-//                    List(documents, id: \.date) { doc in
-//                        viewModel.fbAuth.currentUser?.uid == doc.sender ?
-//                            TextBubble(message: doc.message, color: Color.green, alignment: .trailing).id(doc.date) :
-//                            TextBubble(message: doc.message, color: Color.blue, alignment: .leading).id(doc.date)
-//                    }
-//
-//                    .background(K.bgColor)
-//                    .scrollContentBackground(.hidden)
-//                    .overlay(Group {
-//                        if documents.isEmpty {
-//                            ZStack {
-//                                K.bgColor.ignoresSafeArea()
-//                                Text("Start a Conversation!")
-//                            }
-//                        }
-//                    }
-//                    )

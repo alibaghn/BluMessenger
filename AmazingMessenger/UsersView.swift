@@ -36,7 +36,6 @@ struct UsersView: View {
                                 }
                             }
                             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Seach User ID")
-                            // TODO: change color of cancel button from blue to white
                             .onAppear {
                                 UISearchBar.appearance().tintColor = UIColor.white
                                 viewModel.addAuthListener()

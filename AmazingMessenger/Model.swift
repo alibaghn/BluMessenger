@@ -11,8 +11,7 @@ enum AuthState {
     case WillSignIn, WillSignUp, DidSignIn, DidSignOut
 }
 
-
-struct Document: Codable{
+struct Document: Codable {
     var date: Decimal
     var sender: String
     var message: String
@@ -21,4 +20,7 @@ struct Document: Codable{
 struct User: Codable, Hashable, Identifiable {
     var id: String
     var email: String
+    var emailPrefix: String {
+        return email.components(separatedBy: "@")[0]
+    }
 }

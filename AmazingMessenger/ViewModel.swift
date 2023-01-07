@@ -29,7 +29,7 @@ class ViewModel: ObservableObject {
     @Published var rePassword: String = ""
     @Published var currentUser: FirebaseAuth.User?
     @Published var favUsers: [User] = []
- 
+
     // MARK: - LoginView Functions
 
     func addAuthListener() {

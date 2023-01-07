@@ -9,10 +9,14 @@ import SwiftUI
 
 struct UserAvatar: View {
     let email: String
+    var emailPrefix: String {
+        return email.components(separatedBy: "@")[0]
+    }
+
     var body: some View {
         VStack {
             Image(systemName: "person.crop.circle")
-            Text(email.components(separatedBy: "@")[0])
+            Text(emailPrefix)
         }
     }
 }
