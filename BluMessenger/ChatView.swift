@@ -64,7 +64,7 @@ struct ChatView: View {
             .onAppear {
                 viewModel.createGroupId(with: user.id)
                 addSnapShotListener()
-                viewModel.favUsers.append(user)
+                !viewModel.favUsers.contains(user) ? viewModel.favUsers.append(user) : nil
             }
 
             .onDisappear {
