@@ -112,6 +112,24 @@ class ViewModel: ObservableObject {
         }
     }
     
+    func deleteAccount() {
+        currentUser?.reauthenticate(with: EmailAuthProvider.credential(withEmail: email, password: password)) { _, error in
+            if let error {
+                print(error.localizedDescription)
+            } else {
+                print("Reauthenticated")
+            }
+        }
+        currentUser?.delete { error in
+            if let error {
+                print("can't delete account: \(error.localizedDescription)")
+            } else {
+                print("account deleted")
+                self.signOut()
+            }
+        }
+    }
+    
     func createGroupId(with id: String) {
         var groupId: String {
             if id < fbAuth.currentUser!.uid {

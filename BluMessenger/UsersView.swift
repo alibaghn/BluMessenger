@@ -53,12 +53,13 @@ struct UsersView: View {
                                 }
 
                                 ToolbarItem(placement: .navigationBarTrailing) {
-                                    Button {
-                                        viewModel.signOut()
+                                    NavigationLink {
+                                        SettingView()
+
                                     } label: {
                                         HStack {
-                                            Image(systemName: "door.left.hand.open")
-                                            Text("Log out")
+                                            Image(systemName: "gearshape.circle.fill")
+                                            Text("Settings")
                                         }
                                     }
                                 }
@@ -76,3 +77,8 @@ struct UsersView: View {
         }
     }
 }
+
+// HStack {
+//    Image(systemName: "door.left.hand.open")
+//    Text("Log out")
+// }
