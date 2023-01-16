@@ -18,6 +18,10 @@ struct UsersView: View {
         }
     }
 
+    init() {
+        UINavigationBar.setAnimationsEnabled(false)
+    }
+
     let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
 
     var body: some View {

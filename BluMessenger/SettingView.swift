@@ -22,7 +22,7 @@ struct SettingView: View {
                 Spacer()
                 Divider()
                 Spacer()
-                
+
                 Button("Delete Account", role: .destructive) {
                     isConfirmPresent = true
                 }.confirmationDialog("Delete Account?", isPresented: $isConfirmPresent) {
@@ -32,7 +32,7 @@ struct SettingView: View {
                 } message: {
                     Text("Are you sure you want to delete your account?")
                 }.buttonStyle(.borderedProminent)
-                
+
                 Spacer()
             }
         }.foregroundColor(.white)
